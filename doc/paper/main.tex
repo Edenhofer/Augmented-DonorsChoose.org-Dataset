@@ -82,7 +82,7 @@
 \begin{abstract}
 The DonorsChoose.org dataset of past donations provides a big and feature-rich corpus of users and items. The dataset matches donors to projects in which they might be interested in and hence is intrinsically about recommendations. Due to the availability of detailed item-, user- and transaction-features, this corpus represents a suitable candidate for meta-learning approaches to be tested. This study aims at providing an augmented corpus for further recommender systems studies to test and evaluate meta-learning approaches. In the augmentation, metadata of collaborative and content-based filtering techniques is amended to the corpus. It is further extended with aggregated statistics for users and transactions and an exemplary meta-learning experiment. The performance in the learning subsystem is measured via the recall of recommended items in a Top-N test set. The augmented dataset and the source code are released into the public domain at GitHub:BeelGroup/Augmented-DonorsChoose.org-Dataset.
 
-\keywords{ecommender systems \and meta-learning \and dataset augmentation \and ensemble learning \and hybrid recommenders.}
+\keywords{recommender systems \and meta-learning \and dataset augmentation \and ensemble learning \and hybrid recommenders.}
 \end{abstract}
 
 \section{Introduction}
@@ -143,8 +143,7 @@ The preparation of the dataset preserves a little more than half of the data wit
 	\subcaptionbox{Interaction Strength\label{fig:InteractionStrength}}{
 		\includegraphics[width=0.45\textwidth,height=\textheight,keepaspectratio]{{{../res/DonationAmount - Distribution of ratings for logarithmic bins and excluded outliers}}}
 	}
-	\caption{Frequency of the number of interactions per user without outliers on the left and the distribution of the transformed interaction strength on the right.}
-	\label{fig:Interactions}
+	\caption{The frequency of the number of interactions per user without outliers is shown in~\subref{fig:InteractionFrequency} and the distribution of the transformed interaction strength is shown in~\subref{fig:InteractionStrength}.}\label{fig:Interactions}
 \end{figure}
 
 The requirement enforcing users to have interacted at least twice results in a distribution of the number of users interacting with items which decays exponentially as depicted in~\autoref{fig:InteractionFrequency}. This is to be expected as the time users can invest in researching items and their total interaction strength (budget) is limited. The dataset is dominated by users which interacted exactly two times.
@@ -154,7 +153,7 @@ The distribution of the transformed interaction strength in analogy to a rating 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{{{../res/Learning subsystem - Position in Top-N test set}}}
-	\caption{Statistical features of the distributions of the recall-positions of the learning subsystem. The dashed green lines indicate the mean, the straight orange lines the median. The percentage below each algorithm indicates how often it is the best possible algorithm. To resolve a draw deterministically, the “best” algorithm is decided in alphabetic order.}
+	\caption{Statistical features of the distributions of the recall-positions of the learning subsystem. The dashed green lines indicate the mean, the straight orange lines the median. The percentage below each algorithm indicates how often it is the best possible algorithm. To resolve a draw deterministically, the ``best'' algorithm is decided in alphabetic order.}
 	\label{fig:MetaLearnerStatistics}
 \end{figure}
 
