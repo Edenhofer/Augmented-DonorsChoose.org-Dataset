@@ -107,7 +107,7 @@ The learning subsystem comprises two collaborative filtering techniques and two 
 	\centering
 	\caption{Illustrative example of the overall design of the augmented transaction table with amended learning subsystem performance scores, statistics and meta-learner information.}%
 	\label{tab:IllustrativeTable}
-	\includegraphics[width=\textwidth,height=0.5\textheight,keepaspectratio]{{{../res/Illustrative example of the overall design of the augmented transaction table}}}
+	\includegraphics[width=\textwidth,height=0.5\textheight,keepaspectratio]{{{../res/table}}}
 \end{table}
 
 \subsection{Dataset Preparation}
@@ -144,11 +144,11 @@ The preparation of the dataset preserves a little more than half of the data wit
 \begin{figure}[ht]
 	\centering
 	\subcaptionbox{Interactions Frequency\label{fig:InteractionFrequency}}{
-		\includegraphics[width=0.45\textwidth,height=\textheight,keepaspectratio]{{{../res/DonorID - Distribution of number of interactions per user}}}
+		\includegraphics[width=0.45\textwidth,height=\textheight,keepaspectratio]{{{../res/number_interactions}}}
 	}
 	\hspace{2em}
 	\subcaptionbox{Interaction Strength\label{fig:InteractionStrength}}{
-		\includegraphics[width=0.45\textwidth,height=\textheight,keepaspectratio]{{{../res/DonationAmount - Distribution of ratings for logarithmic bins and excluded outliers}}}
+		\includegraphics[width=0.45\textwidth,height=\textheight,keepaspectratio]{{{../res/distribtion_ratings}}}
 	}
 	\caption{The frequency of the number of interactions per user without outliers is shown in~\subref{fig:InteractionFrequency} and the distribution of the transformed interaction strength is shown in~\subref{fig:InteractionStrength}.}\label{fig:Interactions}
 \end{figure}
@@ -159,7 +159,7 @@ The distribution of the transformed interaction strength in analogy to a rating 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{{{../res/Learning subsystem - Position in Top-N test set}}}
+	\includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{{{../res/learning_subsystem_position}}}
 	\caption{Statistical features of the distributions of the recall-positions of the learning subsystem. The dashed green lines indicate the mean, the straight orange lines the median. The percentage below each algorithm indicates how often it is the best possible algorithm. To resolve a draw deterministically, the ``best'' algorithm is decided in alphabetic order.}%
 	\label{fig:MetaLearnerStatistics}
 \end{figure}
@@ -174,7 +174,7 @@ Between the different meta-learning approaches, significant changes in the mean 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{{{../res/Meta-learner Performance - Average position in Top-N test set for various meta-learner algorithms with augmented learning subsystem filtering techniques}}}
+	\includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{{{../res/meta_learner_performance_average_position}}}
 	\caption{Performance of the meta-learner system addressing the ASP. The dashed orange line represents the overall best algorithm, i.e., TF-IDF.}%
 	\label{fig:MetaLearnerPerformance}
 \end{figure}
