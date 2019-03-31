@@ -48,11 +48,13 @@
 	%}
 	\makeatother
 	\setlength{\intextsep}{1em}  % Reduce excessive spacing between float and text
-	\setlength{\textfloatsep}{1em}  % Reduce excessive spacing between caption and text
+	%\setlength{\textfloatsep}{1em}  % Reduce excessive spacing between caption and text
 
 	% Use bold sub-caption references
 	\DeclareCaptionLabelFormat{bold}{\textbf{#2}}
 	\captionsetup{subrefformat=bold}
+
+	\pagenumbering{gobble}  % Disable page-numbering
 
 	%\parindent0em  % Indentation of the first line of a paragraph
 	\newcommand{\leadingzero}[1]{\ifnum#1<10 0\the#1\else\the#1\fi}
