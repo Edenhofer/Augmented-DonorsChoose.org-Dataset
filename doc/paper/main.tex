@@ -69,19 +69,20 @@
 \begin{document}
 
 \titlerunning{Augmenting the DonorsChoose.org Corpus for Meta-Learning}  % Abbreviated title
-\title{Augmenting the DonorsChoose.org Corpus for Meta-Learning}
-\author{Gordian~Edenhofer\inst{1,2} \and Andrew~Collins\inst{1}}
+\title{Augmenting the DonorsChoose.org Corpus for Meta-Learning%
+	\thanks{This publication emanated from research conducted with the financial support of Science Foundation Ireland (SFI) under Grant Number 13/RC/2106.}}
+\author{Gordian~Edenhofer\inst{1,2} \and Andrew~Collins\inst{1} \and Akiko~Aizawa\inst{2} \and Joeran~Beel\inst{1,2}}
 \authorrunning{G. Edenhofer et al.}  % Abbreviated author field
 \institute{
 	Trinity College Dublin, School of Computer Science \& Statistics, ADAPT Centre, Ireland\\ \and
-	National Institute of Informatics Tokyo, Digital Content and Media Sciences Division, Japan\\ \email{G.Edenhofer@campus.lmu.de, collinsa@tcd.ie}
+	National Institute of Informatics Tokyo, Digital Content and Media Sciences Division, Japan\\ \email{beelj@tcd.ie, collinsa@tcd.ie, aizawa@nii.ac.jp}
 }
 
 \maketitle  % Typeset the header of the contribution
 \markboth{}{}  % Clear the section and author from the page header
 
 \begin{abstract}
-The DonorsChoose.org dataset of past donations provides a big and feature-rich corpus of users and items. The dataset matches donors to projects in which they might be interested in and hence is intrinsically about recommendations. Due to the availability of detailed item-, user- and transaction-features, this corpus represents a suitable candidate for meta-learning approaches to be tested. This study aims at providing an augmented corpus for further recommender systems studies to test and evaluate meta-learning approaches. In the augmentation, metadata of collaborative and content-based filtering techniques is amended to the corpus. It is further extended with aggregated statistics for users and transactions and an exemplary meta-learning experiment. The performance in the learning subsystem is measured via the recall of recommended items in a Top-N test set. The augmented dataset and the source code are released into the public domain at \href{https://github.com/Edenhofer/Augmented-DonorsChoose.org-Dataset}{GitHub:Edenhofer/Augmented-DonorsChoose.org-Dataset}.
+The DonorsChoose.org dataset of past donations provides a big and feature-rich corpus of users and items. The dataset matches donors to projects in which they might be interested in and hence is intrinsically about recommendations. Due to the availability of detailed item-, user- and transaction-features, this corpus represents a suitable candidate for meta-learning approaches to be tested. This study aims at providing an augmented corpus for further recommender systems studies to test and evaluate meta-learning approaches. In the augmentation, metadata of collaborative and content-based filtering techniques is amended to the corpus. It is further extended with aggregated statistics for users and transactions and an exemplary meta-learning experiment. The performance in the learning subsystem is measured via the recall of recommended items in a Top-N test set. The augmented dataset and the source code are released into the public domain at \href{https://github.com/BeelGroup/Augmented-DonorsChoose.org-Dataset}{GitHub:BeelGroup/Augmented-DonorsChoose.org-Dataset}.
 
 \keywords{recommender systems \and meta-learning \and dataset augmentation \and ensemble learning \and hybrid recommenders.}
 \end{abstract}
