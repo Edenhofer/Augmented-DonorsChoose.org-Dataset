@@ -64,7 +64,7 @@
 	\def\permille{\ensuremath{{}^\text{o}\mkern-5mu/\mkern-3mu_\text{oo}}}  % Permille sign
 
 	\lstset{basicstyle=\ttfamily,breaklines=true}  % Prettier code highlighting style
-	\pagestyle{myheadings}  % Prettier page format with header but without footer
+	\pagestyle{empty}  % Prettier page format without header and footer
 
 \begin{document}
 
@@ -79,7 +79,7 @@
 }
 
 \maketitle  % Typeset the header of the contribution
-\markboth{}{}  % Clear the section and author from the page header
+%\markboth{}{}  % Clear the section and author from the page header; also see `\pagestyle`
 
 \begin{abstract}
 The DonorsChoose.org dataset of past donations provides a big and feature-rich corpus of users and items. The dataset matches donors to projects in which they might be interested in and hence is intrinsically about recommendations. Due to the availability of detailed item-, user- and transaction-features, this corpus represents a suitable candidate for meta-learning approaches to be tested. This study aims at providing an augmented corpus for further recommender systems studies to test and evaluate meta-learning approaches. In the augmentation, metadata of collaborative and content-based filtering techniques is amended to the corpus. It is further extended with aggregated statistics of users and transactions and an exemplary meta-learning experiment. The performance in the learning subsystem is measured via the recall of recommended items in a Top-N test set. The augmented dataset and the source code are released into the public domain at \href{https://github.com/BeelGroup/Augmented-DonorsChoose.org-Dataset}{GitHub:BeelGroup/Augmented-DonorsChoose.org-Dataset}.
