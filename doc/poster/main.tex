@@ -71,7 +71,7 @@
 \institute{%
 	\inst{1}Trinity College Dublin, School of Computer Science \& Statistics, ADAPT Centre, Ireland\\
 	\inst{2}National Institute of Informatics Tokyo, Digital Content and Media Sciences Division, Japan
-	\and \href{mailto:beelj@tcd.ie}{beelj@tcd.ie}, \href{mailto:collinsa@tcd.ie}{collinsa@tcd.ie}, \href{mailto:aizawa@nii.ac.jp}{aizawa@nii.ac.jp}
+	\and \href{mailto:beelj@tcd.ie}{beelj@tcd.ie}, \href{mailto:ancollin@tcd.ie}{ancollin@tcd.ie}, \href{mailto:aizawa@nii.ac.jp}{aizawa@nii.ac.jp}
 }
 \date{\itshape{} Algorithm Selection and Meta-Learning in Information Retrieval (AMIR)}  % Set date to venue
 
@@ -122,7 +122,7 @@
 				Multiple examples of manual and repetitious data augmentation may be found in the scientific literature, for instance in~\cite{CUNHA2018128,DBLP:journals/corr/abs-1805-12118,Ekstrand:2012:RFP:2365952.2366002}. Furthermore, the choice of the metric for computing metadata of single machine learners is important. Using the RMSE, as is done in some of the aforementioned publications, disallows using content-based methods.
 				\parvspace{}
 
-				Our objective is to address the data augmentation part in a comprehensive and reproducible~\cite{UMUAI:TowardsReproducibilityInRecSysBeel2016} way as to allow researchers to focus on the actual meta-learning task. We are presenting a public domain dataset which to our best knowledge has not been used for meta-learning before in the scientific community, yet due to its feature-rich and vast corpus is suitable.
+				Our objective is to address the data augmentation part in a comprehensive and reproducible~\cite{UMUAI:TowardsReproducibilityInRecSysBeel2016} way. We are augmenting a public domain dataset intrinsically about recommendations which to our best knowledge has not been used for meta-learning before in the scientific community. Yet due to its feature-rich and vast corpus is suitable.
 			\end{block}
 		\end{column}
 
@@ -135,7 +135,7 @@
 
 		\begin{column}{0.45\textwidth}
 			\begin{block}{Methodology}
-				The DonorsChoose.org dataset is composed of past donations featuring $4.69$ million transactions performed by $2.12$ million users having donated to $1.11$ million projects. In contrast to, e.g., the popular MovieLense dataset, the DonorsChoose.org corpus provides significantly more transactions with more detailed item and transaction information as exemplary seen in~\autoref{tab:IllustrativeTable}.
+				The DonorsChoose.org dataset is composed of past donations featuring $4.69$ million transactions performed by $2.12$ million users having donated to $1.11$ million projects. It provides more feature-richt transactions in contrast to, e.g., the popular MovieLens dataset as outlined in~\autoref{tab:IllustrativeTable}.
 				\parvspace{}
 
 				The augmented data which is to the right of the separator in~\autoref{tab:IllustrativeTable} is composed of the metadata of SVD, KNN, TF-IDF and word-embedding using fastText~\cite{scikit-learn,rehurek_lrec,DBLP:journals/corr/BojanowskiGJM16}. Vector representations of items are the normalized sum of the vectors of the normalized embeddings of the individual words. In order to work with the data in an efficient way, $100,000$ transactions are sampled.

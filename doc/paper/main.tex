@@ -75,7 +75,7 @@
 \authorrunning{G. Edenhofer et al.}  % Abbreviated author field
 \institute{
 	Trinity College Dublin, School of Computer Science \& Statistics, ADAPT Centre, Ireland\\ \and
-	National Institute of Informatics Tokyo, Digital Content and Media Sciences Division, Japan\\ \email{beelj@tcd.ie, collinsa@tcd.ie, aizawa@nii.ac.jp}
+	National Institute of Informatics Tokyo, Digital Content and Media Sciences Division, Japan\\ \email{beelj@tcd.ie, ancollin@tcd.ie, aizawa@nii.ac.jp}
 }
 
 \maketitle  % Typeset the header of the contribution
@@ -92,16 +92,16 @@ Meta-Learning is the process of applying machine learning algorithms on metadata
 
 One challenge for researchers interested in meta-learning is that suitable datasets are time-consuming and cumbersome to construct. Creating a system of individual machine learning experiments and amending their metadata to the original corpus takes time and resources away from working with the actual meta-learners. Multiple examples of manual and repetitious data augmentation may be found in the scientific literature, for instance in~\cite{CUNHA2018128,DBLP:journals/corr/abs-1805-12118,Ekstrand:2012:RFP:2365952.2366002}. Furthermore, the choice of the metric for computing metadata of single machine learners is important. Using the RMSE, as is done in some of the aforementioned publications, disallows using content-based methods.
 
-Our objective is to address the data augmentation part in a comprehensive and reproducible~\cite{UMUAI:TowardsReproducibilityInRecSysBeel2016} way as to allow researchers to focus on the actual meta-learning task. We are presenting a public domain dataset which to our best knowledge has not been used for meta-learning before in the scientific community, yet due to its feature-rich and vast corpus is a suitable candidate. The raw dataset is augmented with metadata of several machine learning algorithms from a variety of fields (cf.~\cite{DBLP:journals/corr/abs-1805-12118}). In place of a metric, the recall in a Top-N set is used as it can be computed for a wide range of algorithms. The dataset is further amended with aggregated statistics about users and items, and metadata of an exemplary experiment.
+Our objective is to address the data augmentation part in a comprehensive and reproducible~\cite{UMUAI:TowardsReproducibilityInRecSysBeel2016} way as to allow researchers to focus on the actual meta-learning task. We are augmenting a publicly available dataset intrinsically about recommendations which to our best knowledge has not been used for meta-learning before in the scientific community. Yet due to its feature-rich and vast corpus is a suitable candidate. The raw dataset is augmented with metadata of several machine learning algorithms from a variety of fields (cf.~\cite{DBLP:journals/corr/abs-1805-12118}). In place of a metric, the recall in a Top-N set is used as it can be computed for a wide range of algorithms. The dataset is further amended with aggregated statistics about users and items, and metadata of an exemplary experiment.
 
 \section{Methodology}
 
 \subsection{The Dataset}
-DonorsChoose.org is an organization which enables teachers to file project requests for resources for their school. Collectively the nonprofit has raised $\$685$ million for classrooms in the United States of America. Their dataset composed of past donations features $4.69$ million transactions performed by $2.12$ million users having donated to $1.11$ million projects. The corpus provides significantly more transactions with more detailed item and transaction information compared to, e.g., the popular MovieLens dataset. An exemplary itemized view of the augmented dataset is shown in~\autoref{tab:IllustrativeTable}.
+DonorsChoose.org is an organization which enables teachers to file project requests for resources for their school. Collectively the nonprofit has raised $\$685$ million for classrooms in the United States of America. Their dataset composed of past donations features $4.69$ million transactions performed by $2.12$ million users having donated to $1.11$ million projects. This work uses the eighth version of the dataset hosted at \href{https://www.kaggle.com/donorschoose/io}{kaggle.com/donorschoose/io}. An exemplary itemized view of the augmented dataset is shown in~\autoref{tab:IllustrativeTable} with an outline of the plain data to the left of the separator.
 
 The corpus features comprehensive information on the users (donors), items (projects) and transactions respectively interactions (donations). Transactions are represented by an interaction of a user with an item at a specific point in time and further include a strength (amount~donated). Users feature information about their location and a boolean value indicating whether they are a teacher. Items feature multiple textual descriptions, funding goals, a list of associated categories and types, information about the creator and details about the location of the school which the item is about.
 
-In a first step, two collaborative filtering techniques and two content-based filtering techniques are applied. The performance measures of the single algorithms are amended to the table. Next, aggregated user and item statistics are calculated and added to the table. Lastly, four exemplary meta-learners are applied and the performance measures of the individual approaches are added to the corpus.
+In a first step, we apply two collaborative filtering techniques and two content-based filtering techniques. The performance measures of the single algorithms are amended to the table. Next, we calculate aggregated user and item statistics and added them to the table. Lastly, four exemplary meta-learners are applied and the performance measures of the individual approaches are added to the corpus.
 
 \begin{table}[ht]
 	\centering
@@ -113,23 +113,23 @@ In a first step, two collaborative filtering techniques and two content-based fi
 \subsection{Dataset Preparation}
 To prepare the dataset for evaluations, duplicate interactions are merged as the recommender systems shall not recommend items to which the user has already donated to. Internal stop words in description strings of items are stripped. Furthermore, transactions containing no information about the user's location are dropped thereby enabling the consistent usage of a user's location information in new approaches.
 
-Additionally, users having interacted less than twice are removed as well. Although, this limits the target group, the step is unavoidable as the employed validation process requires at least one interaction per user for testing and one for training. The evaluation requires user profiles and hence training-transactions in order to recommend new items which in turn need to be validated against test-transactions. Lastly, the donated amount is transformed to a transaction strength in the range of unity to five in analogy to a rating score. This step reduces the influence of outliers respectively uncommon donated amounts.
+Additionally, users having interacted less than twice are removed as well. Although, this limits the target group, the step is unavoidable as the employed validation process requires at least one interaction per user for testing and one for training. The evaluation requires user profiles and hence training-transactions in order to recommend new items which in turn need to be validated against test-transactions. Lastly, the donated amount is transformed to a transaction strength in the range of unity to five in analogy to a rating score. This step reduces the influence of outliers.
 
 \subsection{Learning Subsystem}
 The learning subsystem is a recommender system itself. SVD and KNN are used as representatives for collaborative filtering techniques and TF-IDF and word-embedding as content-based filters~\cite{scikit-learn,rehurek_lrec}. Hereby, the otherwise intrinsic inductive bias is reduced. The word-embedding relies on fastText and utilizes pre-trained vectors~\cite{DBLP:journals/corr/BojanowskiGJM16}. Vector representations of items are the normalized sum of the vectors of the normalized embeddings of the individual words. In order to work with the data in an efficient way, transactions are sampled. For this study a sample-size of $100,000$ was chosen. This represents a fair balance between required computing time and ability to generalize.
 
 The recall in a Top-N test set is used as score of how good an algorithm is able to recommend an item.
 \begin{enumerate*}[label= (\arabic*)]
-	\item For each user, first $100$ items with which the user has not interacted with are selected.
-	\item The algorithm is then requested to rank an item with which the user has interacted with but which was not used for building the user's profile and the $100$ randomly sampled items. It is assumed that the random $100$ items are of low interest to the user.
-	\item The position of the item with which the user has interacted with in the ranked test set may now be taken as the recall in a Top-N test set.
+	\item For each user, first $100$ items with which the user has not interacted are selected.
+	\item The algorithm is then requested to rank an item with which the user has interacted but which was not used for building the user's profile and the $100$ randomly sampled items. It is assumed that the random $100$ items are of low interest to the user.
+	\item The position of the item with which the user has interacted in the ranked test set may now be taken as the recall in a Top-N test set.
 \end{enumerate*}
 
 A classical 5-fold cross-validation on the users is applied for training the collaborative filters. An ordering is assumed to be implied by the magnitudes of the values in the reconstructed matrix of the decomposition respectively the distances to the neighbors. The validation process of the content-based approaches uses leave-one-out. The ranking is performed using the cosine similarity of an item's vector and the user's profile.
 
 The choice of evaluation method ensures that it can be applied to a vast set of different algorithms as long as a ranking of items can be produced. Therefore, it allows for a high variety within the set of algorithms in the learning subsystem in contrast to, e.g., RMSE. It further ensures that not just the ability to decompose the data is measured but the ability to recommend new items to users~\cite{Cremonesi:2010:PRA:1864708.1864721}. Hereby, the learning subsystem is kept extensible while still providing useful metadata to meta-learning algorithms.
 
-\subsection{Statistics and Application of Learning Subsystem}
+\subsection{Statistics and Application of the Learning Subsystem}
 The meta-learning system processes the metadata of the learning subsystem and further statistics. Its performance is evaluated via a holdout split on the transaction table using $80\%$ for training and the rest for testing. Transactions are expanded to contain more detailed information about the time, the user's location and aggregated statistics about the mean of the categories, location and interaction-strength of items with which the user has interacted with. Statistics are solely based on the training set. Values for unknown users are filled with the mean in the training data.
 
 Four different meta-learning approaches are discussed which address the Algorithm Selection Problem (\textbf{ASP}) via a switching hybrid ensemble. The aim of the system is to predict the algorithm with the lowest recall-position for each transaction respectively each row in~\autoref{tab:IllustrativeTable}. The overall performance of a meta-learner is measured using the mean recall-position for when the recommended algorithm for each transaction is used.
@@ -160,7 +160,7 @@ The distribution of the transformed interaction strength in analogy to a rating 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{{{../res/learning_subsystem_position}}}
-	\caption{Statistical features of the distributions of the recall-positions of the learning subsystem. The dashed green lines indicate the mean, the straight orange lines the median. The percentage below each algorithm indicates how often it is the best possible algorithm. To resolve a draw deterministically, the ``best'' algorithm is decided in alphabetic order.}%
+	\caption{Statistical features of the distributions of the recall-positions of the learning subsystem. The dashed green lines indicate the means, the straight orange lines the medians. The percentage below each algorithm indicates how often it is the best possible algorithm. To resolve a draw deterministically, the ``best'' algorithm is decided in alphabetic order.}%
 	\label{fig:MetaLearnerStatistics}
 \end{figure}
 
