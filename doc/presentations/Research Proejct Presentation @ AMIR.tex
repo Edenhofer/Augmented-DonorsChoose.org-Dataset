@@ -69,11 +69,17 @@
 \setbeamercolor{section in toc}{fg=black}
 \setbeamercolor{subsection in toc}{fg=black}
 \setbeamertemplate{frametitle}{
-	\color{orange}
-	\begin{center}
-		\textbf{\insertframetitle} \\
-		{\small \insertframesubtitle}
-	\end{center}
+	\nointerlineskip%
+
+	\begin{beamercolorbox}[ht=4em,sep=1em,center,wd=\paperwidth]{frametitle}
+		\color{orange}
+		\bfseries%
+		\strut\insertframetitle\strut%
+		\mdseries%
+		\\
+		\small
+		\strut\insertframesubtitle\strut
+	\end{beamercolorbox}
 }
 \setbeamertemplate{footline}[text line]{
 	\parbox{\linewidth}{
