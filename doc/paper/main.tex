@@ -70,12 +70,13 @@
 
 \titlerunning{Augmenting the DonorsChoose.org Corpus for Meta-Learning}  % Abbreviated title
 \title{Augmenting the DonorsChoose.org Corpus for Meta-Learning%
-	\thanks{This publication emanated from research conducted with the financial support of Science Foundation Ireland (SFI) under Grant Number 13/RC/2106.}}
-\author{Gordian~Edenhofer\inst{1,2} \and Andrew~Collins\inst{1} \and Akiko~Aizawa\inst{2} \and Joeran~Beel\inst{1,2}}
+	}
+\author{Gordian~Edenhofer\inst{1,3} \and Andrew~Collins\inst{2} \and Akiko~Aizawa\inst{3} \and Joeran~Beel\inst{2,3}\thanks{This publication emanated from research conducted with the financial support of Science Foundation Ireland (SFI) under Grant Number 13/RC/2106.}}
 \authorrunning{G. Edenhofer et al.}  % Abbreviated author field
 \institute{
+	Ludwig Maximilian University of Munich, Faculty of Physics, Germany\\ \and
 	Trinity College Dublin, School of Computer Science \& Statistics, ADAPT Centre, Ireland\\ \and
-	National Institute of Informatics Tokyo, Digital Content and Media Sciences Division, Japan\\ \email{beelj@tcd.ie, ancollin@tcd.ie, aizawa@nii.ac.jp}
+	National Institute of Informatics Tokyo, Digital Content and Media Sciences Division, Japan\\ \email{g.edenhofer@campus.lmu.de, ancollin@tcd.ie, aizawa@nii.ac.jp, beelj@tcd.ie}
 }
 
 \maketitle  % Typeset the header of the contribution
@@ -88,7 +89,7 @@ The DonorsChoose.org dataset of past donations provides a big and feature-rich c
 \end{abstract}
 
 \section{Introduction}
-Meta-Learning is the process of applying machine learning algorithms on metadata of previous machine learning experiments. The goal is to improve existing approaches by combining the strengths of several single machine learning systems~\cite{AIR:MetalearningSurveyOfTrendsAndTechnologiesLemke2015}. In recommender systems it is an emerging field of interest as meta-learning promises to utilize patterns in metadata as to retrieve the best possible match of item and user. In order to investigate meta-learning algorithms, the required metadata needs to be computed in advance.
+Meta-Learning is the process of applying machine learning algorithms on metadata of previous machine learning experiments. The goal is to improve existing approaches by combining the strengths of several single machine learning systems~\cite{AIR:MetalearningSurveyOfTrendsAndTechnologiesLemke2015}. In recommender systems it is an emerging field of interest as it utilizes patterns in metadata. In order to investigate meta-learning, the required metadata needs to be computed in advance.
 
 One challenge for researchers interested in meta-learning is that suitable datasets are time-consuming and cumbersome to construct. Creating a system of individual machine learning experiments and amending their metadata to the original corpus takes time and resources away from working with the actual meta-learners. Multiple examples of manual and repetitious data augmentation may be found in the scientific literature, for instance in~\cite{CUNHA2018128,DBLP:journals/corr/abs-1805-12118,Ekstrand:2012:RFP:2365952.2366002}. Furthermore, the choice of the metric for computing metadata of single machine learners is important. Using the RMSE, as is done in some of the aforementioned publications, disallows using content-based methods.
 
